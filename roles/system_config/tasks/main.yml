@@ -1,0 +1,35 @@
+---
+- name: Copy sysctl.conf
+  copy:
+    src: sysctl.conf
+    dest: /etc/sysctl.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: apply sysctl
+
+- name: Copy system.conf
+  copy:
+    src: system.conf
+    dest: /etc/systemd/system.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: daemon-reload
+
+- name: Copy user.conf
+  copy:
+    src: user.conf
+    dest: /etc/systemd/user.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: daemon-reload
+
+- name: Copy limits.conf
+  copy:
+    src: limits.conf
+    dest: /etc/security/limits.conf
+    owner: root
+    group: root
+    mode: "0644"

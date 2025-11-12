@@ -1,0 +1,15 @@
+---
+# Handlers for Nginx
+
+- name: Test nginx configuration
+  command: nginx -t
+  register: nginx_test
+  changed_when: false
+  failed_when: nginx_test.rc != 0
+  listen: reload nginx
+
+- name: Reload nginx service
+  service:
+    name: nginx
+    state: reloaded
+  listen: reload nginx

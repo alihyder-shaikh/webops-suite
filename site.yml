@@ -1,0 +1,9 @@
+---
+- name: Deploy and configure Nginx with SSL and artifacts
+  hosts: begin-docker-test
+  become: true
+  roles:
+    - nginx
+    - ssl
+    - artifacts
+    - system_config

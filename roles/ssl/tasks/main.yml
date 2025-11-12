@@ -1,0 +1,19 @@
+---
+- name: Ensure SSL directory exists
+  file:
+    path: /etc/nginx/ssl
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy SSL certificates
+  copy:
+    src: "{{ item }}"
+    dest: /etc/nginx/ssl/
+    owner: root
+    group: root
+    mode: "0644"
+  with_fileglob:
+    - "roles/ssl/files/*"
+  notify: reload nginx

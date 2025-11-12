@@ -1,0 +1,12 @@
+---
+- name: apply sysctl
+  listen: apply sysctl
+  command: sysctl --system
+  changed_when: false
+
+- name: daemon-reload
+  listen: daemon-reload
+  systemd:
+    daemon_reload: yes
+  changed_when: false
+
