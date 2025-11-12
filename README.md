@@ -1,2 +1,1 @@
-# ansible
-Reusable automation playbooks for Linux server provisioning, application setup, and infrastructure management.
+A curated collection of Ansible runbooks for automating common DevOps tasks — including web server setup (Nginx, Node.js, PM2), system tuning, SSL management, log rotation, and container provisioning using Podman. Designed for quick deployment and reusable across environments.
