@@ -12,8 +12,28 @@ These runbooks automate a complete web stack setup on Linux-based servers, provi
 🔁 Infrastructure hygiene — role-based structure (`nginx`, `ssl`, `artifacts`, `system_config`) that is easy to extend, reuse, and maintain  
 
 ---
-
-## 📂 Playbook & role structure
+## Roles structure
+```bash
+.
+├── site.yml
+└── roles
+    ├── nginx
+    │   ├── handlers/
+    │   ├── tasks/
+    │   └── templates/
+    ├── ssl
+    │   ├── files/
+    │   ├── handlers/
+    │   └── tasks/
+    ├── artifacts
+    │   ├── files/
+    │   └── tasks/
+    └── system_config
+        ├── files/
+        ├── handlers/
+        └── tasks/
+```
+## 📂 Playbook & 
 
 Main entry-point playbook:
 
