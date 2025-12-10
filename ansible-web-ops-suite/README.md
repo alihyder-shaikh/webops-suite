@@ -1,16 +1,29 @@
-A curated collection of Ansible playbooks and automation scripts designed for DevOps workflows — from provisioning servers to configuring web services and managing SSL certificates.
+# WebOps Suite: Ansible Nginx + SSL + System Tuning
 
-🚀 Overview
-These runbooks automate repetitive DevOps tasks on Linux-based servers, providing reliable, reusable, and idempotent automation for:
+A curated collection of Ansible playbooks and roles focused on provisioning an Nginx web server with SSL and OS-level tuning on Linux hosts.
 
-🧱 Web server setup — Nginx, Node.js, PM2
+🚀 Overview  
+These runbooks automate a complete web stack setup on Linux-based servers, providing reliable, reusable, and idempotent automation for:
 
-🔐 SSL certificate management — backup, copy, and sync across nodes
+🧱 Web server setup — Nginx installation, configuration, and reload handlers using Jinja2 templates  
+🔐 SSL certificate management — deployment of `fullchain.pem` and `privatekey.pem`, with Nginx reload on certificate changes  
+🧾 Application artifacts — shipping environment-specific configuration such as `web.cfg` to target nodes  
+🛡 System hardening — OS tuning via `sysctl`, `limits.conf`, and systemd/user configuration files  
+🔁 Infrastructure hygiene — role-based structure (`nginx`, `ssl`, `artifacts`, `system_config`) that is easy to extend, reuse, and maintain  
 
-🕒 System management — NTP, log rotation, process cleanup
+---
 
-🧩 Containerization — Podman installation and test setup
+## 📂 Playbook & role structure
 
-📈 Monitoring — Promtail setup for log forwarding
+Main entry-point playbook:
 
-🔁 Infrastructure hygiene — host sync, artifact copies, server tuning
+```yaml
+# site.yml
+- name: Deploy and configure Nginx with SSL and artifacts
+  hosts: begin-docker-test
+  become: true
+  roles:
+    - nginx
+    - ssl
+    - artifacts
+    - system_config
